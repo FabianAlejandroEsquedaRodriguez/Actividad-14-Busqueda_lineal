@@ -54,6 +54,14 @@ class Computadora{
             return in;
         }
 
+        bool operator == (const Computadora &c){
+            return Nombre_equipo == c.Nombre_equipo;//Compara un nombre con el atributo
+        }
+
+        bool operator == (const Computadora &c) const {
+            return Nombre_equipo == c.Nombre_equipo;
+        }
+
     //Atributos
     private:
         string SO;//Sistema Operativo

@@ -1,10 +1,46 @@
 #include <iostream>
 #include "arreglo_dinamico.h"
+#include "Computadora.h"
 using namespace std;
 
 
 int main(){
-    ArregloDinamico<string> str;//La T en la clase va a recibir strings
+    
+    ArregloDinamico<Computadora> compu;//Arreglo dinamico que va a almacenar computadoras
+
+    Computadora c1("Windows", "16 GB", "Lenovo 330S", 12500.00);
+    Computadora c2("Windows", "12 GB", "HP Pavilio", 18799.00);
+    Computadora c3("Linux", "13 GB", "Lenovo Chromebook", 7193.50);
+    Computadora c4("MacOS", "8 GB", "MacBook Pro", 36209.00);
+    Computadora c5("MacOS", "8 GB", "Apple iMac", 29999.00);
+    
+    compu << c1 << c2 << c3 << c2 << c2;//Se agregan las computadoras al arreglo de computadoras
+    
+    Computadora c6("Windows", "12 GB", "HP Pavilio", 18799.00);
+
+    ArregloDinamico<Computadora*> compus = compu.buscar_todos(c6);;//Arreglo de punteros de computadoras
+
+    if(compus.size() > 0){
+        for(size_t i=0; i<compus.size(); i++){
+            Computadora *co = compus[i];
+            cout<<*co<<endl;
+        }
+    }
+    else{
+        cout<<"No existen coincidencias";
+    }
+
+    
+    // Computadora *pt = compu.buscar(c6);//Se busca por nombre del equipo(3er parametro)
+
+    // if(pt != nullptr){
+    //      cout<<*pt<<endl;
+    // }
+    // else{
+    //      cout<<"No existe"<<endl;
+    // }
+    
+    /*ArregloDinamico<string> str;//La T en la clase va a recibir strings
     size_t posicion;
     //Prueba 1 -> Insertar 4 strings al inicio y al final
     str.insertar_inicio("Prueba Numero 1.1");
@@ -34,7 +70,7 @@ int main(){
     for (size_t i=0; i < str.size(); i++){
         cout<<str[i]<<" ";
     }
-    cout<<endl;
+    cout<<endl;*/
 
     return 0;
 }

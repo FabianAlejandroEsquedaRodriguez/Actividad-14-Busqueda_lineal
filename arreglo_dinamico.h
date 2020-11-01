@@ -20,12 +20,19 @@ class ArregloDinamico{
     void eliminar(size_t pos);//Eliminar un elemento de una posicion valida
 
     T* buscar(const T& s);//Nos va a retornar la posicion de memoria donde esta el elemento a buscar
-   
+    ArregloDinamico<T*> buscar_todos(const T& s);//Va a buscar todos los elementos que coincidan con el template
+    //Va a retornar un arreglo de punteros -> Todos los elementos del areglo van a ser un puntero    
+
     size_t size();//Para retornar los elementos en el arreglo
 
     //Sobrecargar el operador de los [] para mostrar los datos
-    string operator [] (size_t pos){
+    T operator [] (size_t pos){
         return arreglo[pos];
+    }
+
+    friend ArregloDinamico<T>& operator<<(ArregloDinamico<T> &a, const T& s){//Va a recibir un arreglo y el elemento a insertar
+        a.insertar_final(s);
+        return a;
     }
 
     private:
@@ -140,7 +147,7 @@ size_t ArregloDinamico<T>::size(){
 template <class T>
 void ArregloDinamico<T>::expandir(){
 
-    string *nuevo = new T [tam+MAX];//Se va a expandir el tamaÃ±o del arreglo
+    T *nuevo = new T [tam+MAX];//Se va a expandir el tamaÃ±o del arreglo
 
     for (size_t i = 0; i < cont; i++){
         nuevo[i] = arreglo[i];//Copia los elementos hacia el nuevo arreglo
@@ -163,4 +170,19 @@ T* ArregloDinamico<T>::buscar(const T& s){
     return nullptr;//Caso base -> se retorna un puntero nulo (en una posicion no valida)
     
 }
+
+template<class T>
+ArregloDinamico<T*> ArregloDinamico<T>::buscar_todos(const T& s){
+    ArregloDinamico<T*> punteros;//Definimos el arreglo de punteros
+    
+    for(size_t i=0; i< cont; i++){
+        if(s == arreglo[i]){//Si el elemento que queremos buscar esta en el arreglo
+            punteros.insertar_final(&arreglo[i]);//En el arreglo de punteros se va a insertar al final
+                                                 //las direcciones de memoria donde se encuentra el elemento en la posicion i
+        }
+    }
+    return punteros;
+}
+
+
 #endif //ARREGLO_DINAMICO_H

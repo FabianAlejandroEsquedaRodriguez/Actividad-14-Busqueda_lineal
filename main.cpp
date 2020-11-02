@@ -16,7 +16,7 @@ int main(){
     
     compu << c1 << c2 << c3 << c4 << c5;//Se agregan las computadoras al arreglo de computadoras
     
-    Computadora c6("Windows 1", "12 GB", "HP Pavilio", 18799.00);
+    Computadora c6("Windows", "12 GB", "HP Pavilio", 18799.00);
     
     ArregloDinamico<Computadora*> compus = compu.buscar_todos(c6);;//Arreglo de punteros de computadoras
 

@@ -26,7 +26,7 @@ class ArregloDinamico{
     size_t size();//Para retornar los elementos en el arreglo
 
     //Sobrecargar el operador de los [] para mostrar los datos
-    T operator [] (size_t pos){
+    T operator [] (size_t pos){//Retorna elementos de tipo T en la posicion "pos"
         return arreglo[pos];
     }
 

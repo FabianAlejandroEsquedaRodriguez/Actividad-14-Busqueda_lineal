@@ -55,11 +55,11 @@ class Computadora{
         }
 
         bool operator == (const Computadora &c){
-            return Nombre_equipo == c.Nombre_equipo;//Compara un nombre con el atributo
+            return SO == c.SO;//Compara un nombre con el atributo
         }
 
         bool operator == (const Computadora &c) const {
-            return Nombre_equipo == c.Nombre_equipo;
+            return SO == c.SO;
         }
 
     //Atributos

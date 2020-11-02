@@ -10,28 +10,28 @@ int main(){
 
     Computadora c1("Windows", "16 GB", "Lenovo 330S", 12500.00);
     Computadora c2("Windows", "12 GB", "HP Pavilio", 18799.00);
-    Computadora c3("Linux", "13 GB", "Lenovo Chromebook", 7193.50);
+    Computadora c3("Windows", "13 GB", "Lenovo Chromebook", 7193.50);
     Computadora c4("MacOS", "8 GB", "MacBook Pro", 36209.00);
     Computadora c5("MacOS", "8 GB", "Apple iMac", 29999.00);
     
-    compu << c1 << c2 << c3 << c2 << c2;//Se agregan las computadoras al arreglo de computadoras
+    compu << c1 << c2 << c3 << c4 << c5;//Se agregan las computadoras al arreglo de computadoras
     
-    Computadora c6("Windows", "12 GB", "HP Pavilio", 18799.00);
-
+    Computadora c6("Windows 1", "12 GB", "HP Pavilio", 18799.00);
+    
     ArregloDinamico<Computadora*> compus = compu.buscar_todos(c6);;//Arreglo de punteros de computadoras
 
     if(compus.size() > 0){
         for(size_t i=0; i<compus.size(); i++){
-            Computadora *co = compus[i];
+            Computadora *co = compus[i];//En un puntero, se guardan las posiciones de memoria donde hay conicidencias
+                                        //segun lo que retorna la sobrecarga del operador []
             cout<<*co<<endl;
         }
     }
     else{
-        cout<<"No existen coincidencias";
+        cout<<"No existen coincidencias"<<endl;
     }
 
-    
-    // Computadora *pt = compu.buscar(c6);//Se busca por nombre del equipo(3er parametro)
+    // Computadora *pt = compu.buscar(c6);//Se busca por SO(1er parametro)
 
     // if(pt != nullptr){
     //      cout<<*pt<<endl;
@@ -39,6 +39,7 @@ int main(){
     // else{
     //      cout<<"No existe"<<endl;
     // }
+
     
     /*ArregloDinamico<string> str;//La T en la clase va a recibir strings
     size_t posicion;
